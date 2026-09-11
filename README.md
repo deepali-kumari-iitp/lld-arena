@@ -3,9 +3,9 @@
 
 > **Practice. Design. Improve.**
 
-LLD Arena is an interactive Low-Level Design practice platform built to help developers solve real-world system design problems by thinking in objects, defining responsibilities, modelling relationships, and improving through structured evaluation.
+🚀 **Live Demo:** https://lld-arena.vercel.app
 
-Instead of only writing code, LLD Arena focuses on the **design process** — classes, relationships, responsibilities, abstractions, extensibility, and design patterns.
+LLD Arena is an interactive Low-Level Design practice platform built to help developers solve real-world system design problems by thinking in objects, defining responsibilities, modelling relationships, and improving through structured evaluation.
 
 ---
 
