@@ -1,36 +1,185 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+@"
+# LLD Arena
 
-## Getting Started
+> **Practice. Design. Improve.**
 
-First, run the development server:
+LLD Arena is an interactive Low-Level Design practice platform built to help developers solve real-world system design problems by thinking in objects, defining responsibilities, modelling relationships, and improving through structured evaluation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Instead of only writing code, LLD Arena focuses on the **design process** — classes, relationships, responsibilities, abstractions, extensibility, and design patterns.
+
+---
+
+## ✨ Features
+
+- 🧩 **Real-world LLD Challenges**
+  - Practice system design problems inspired by real-world applications.
+  - Start with the Parking Lot challenge and expand to more systems.
+
+- 🎨 **Interactive Design Canvas**
+  - Create classes visually.
+  - Add attributes and methods.
+  - Connect classes using relationships.
+  - Model inheritance, composition, aggregation, association, and dependency.
+
+- 📝 **Design Explanation**
+  - Explain the reasoning behind your design.
+  - Document responsibilities and architectural decisions.
+
+- 🤖 **Structured Evaluation**
+  - Evaluate designs across important LLD dimensions:
+    - Responsibility
+    - Abstraction
+    - Relationships
+    - Extensibility
+    - Design Patterns
+
+- 📊 **Attempts & Progress**
+  - Track previous submissions.
+  - Review evaluation results.
+  - Improve designs through repeated practice.
+
+- 🌙 **Premium Developer-focused UI**
+  - Dark-first interface
+  - Glassmorphism
+  - Orange accent system
+  - Responsive layouts
+  - Interactive animations
+
+---
+
+## 🏗️ Current Learning Flow
+
+```text
+Landing Page
+     ↓
+Explore Challenges
+     ↓
+Select Parking Lot
+     ↓
+Read Requirements
+     ↓
+Design Classes
+     ↓
+Define Relationships
+     ↓
+Explain Design
+     ↓
+Submit Solution
+     ↓
+Evaluation
+     ↓
+Review Score
+     ↓
+Attempts / Improve
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🅿️ Current Challenge
+Parking Lot System
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The first fully functional challenge focuses on designing a Parking Lot system.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The challenge covers concepts such as:
 
-## Learn More
+Object-Oriented Design
+Encapsulation
+Abstraction
+Inheritance
+Composition
+Aggregation
+Association
+Responsibility Assignment
+Extensibility
+Design Patterns
 
-To learn more about Next.js, take a look at the following resources:
+The system requires the designer to think about different vehicle types, parking spots, parking operations, and relationships between domain objects.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🛠️ Tech Stack
+Frontend
+Next.js
+React
+TypeScript
+Tailwind CSS
+Motion
+Lucide React
+Interactive Design
+React Flow (@xyflow/react)
+Forms & Validation
+React Hook Form
+Zod
+Backend / Data
+Next.js Route Handlers
+Prisma
+PostgreSQL-ready architecture
+📁 Project Structure
+lld-arena/
+│
+├── app/
+│   ├── api/
+│   │   └── submissions/
+│   ├── attempts/
+│   ├── challenges/
+│   │   └── parking-lot/
+│   └── evaluation/
+│       └── parking-lot/
+│
+├── components/
+│   ├── home/
+│   ├── layout/
+│   ├── problems/
+│   └── ui/
+│
+├── lib/
+│   └── utils/
+│
+├── prisma/
+│   └── schema.prisma
+│
+├── public/
+│
+├── .env.example
+├── package.json
+├── tsconfig.json
+└── README.md
+🚀 Getting Started
+1. Clone the repository
+git clone git@github.com:deepali-kumari-iitp/lld-arena.git
+cd lld-arena
+2. Install dependencies
+npm install
+3. Configure environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create a local .env file:
 
-## Deploy on Vercel
+cp .env.example .env
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+On Windows PowerShell:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copy-Item .env.example .env
+
+Add the required environment variables to .env.
+
+Never commit .env or API keys to GitHub.
+
+4. Run the development server
+npm run dev
+
+Open:
+
+http://localhost:3000
+5. Create a production build
+npm run build
+6. Start production server
+npm run start
+🧪 Development
+
+Run the development server:
+
+npm run dev
+
+Build the project:
+
+npm run build
+
+Run linting:
+
+npm run lint
