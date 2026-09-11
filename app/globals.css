@@ -1,26 +1,661 @@
+
+@import "@xyflow/react/dist/style.css";
 @import "tailwindcss";
+/* =========================================================
+   LLD ARENA — GLOBAL DESIGN SYSTEM
+   Visual Direction:
+   Black + Espresso + Deep Brown + Burnt Orange + Amber
+   ========================================================= */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* -------------------------------------------------------
+     BACKGROUNDS
+     ------------------------------------------------------- */
+
+  --background: #050403;
+  --background-soft: #090705;
+  --background-elevated: #100a06;
+  --background-brown: #160d07;
+
+  /* -------------------------------------------------------
+     TEXT
+     ------------------------------------------------------- */
+
+  --foreground: #f7f1eb;
+  --foreground-soft: #ded3c9;
+  --muted-foreground: #9a8d82;
+  --subtle-foreground: #685c52;
+
+  /* -------------------------------------------------------
+     BRAND — ORANGE
+     ------------------------------------------------------- */
+
+  --primary: #f26a13;
+  --primary-light: #ff8530;
+  --primary-dark: #c4510a;
+
+  --secondary: #e49a5b;
+
+  /* -------------------------------------------------------
+     BROWN / ORANGE DEPTH
+     ------------------------------------------------------- */
+
+  --brown-900: #0b0806;
+  --brown-800: #120a06;
+  --brown-700: #1a0e07;
+  --brown-600: #241208;
+  --brown-500: #351806;
+
+  /* -------------------------------------------------------
+     ORANGE PALETTE
+     ------------------------------------------------------- */
+
+  --orange-deep: #7a3208;
+  --orange-burnt: #b84708;
+  --orange-rich: #c4510a;
+  --orange-main: #f26a13;
+  --orange-bright: #ff8530;
+  --orange-light: #ff9b4a;
+  --orange-amber: #ffb36b;
+
+  /* -------------------------------------------------------
+     GLOW
+     ------------------------------------------------------- */
+
+  --orange-glow-soft: rgba(242, 106, 19, 0.07);
+  --orange-glow: rgba(242, 106, 19, 0.12);
+  --orange-glow-medium: rgba(242, 106, 19, 0.18);
+  --orange-glow-strong: rgba(242, 106, 19, 0.28);
+
+  /* -------------------------------------------------------
+     SEMANTIC COLORS
+     ------------------------------------------------------- */
+
+  --success: #69d39a;
+  --warning: #f3b74d;
+  --destructive: #e96a5b;
+
+  /* -------------------------------------------------------
+     GLASS
+     ------------------------------------------------------- */
+
+  --glass-surface: rgba(20, 11, 6, 0.48);
+  --glass-surface-light: rgba(255, 255, 255, 0.025);
+  --glass-surface-hover: rgba(45, 20, 8, 0.55);
+
+  --glass-border: rgba(255, 183, 120, 0.09);
+  --glass-border-hover: rgba(255, 132, 48, 0.35);
+
+  /* -------------------------------------------------------
+     SHADOWS
+     ------------------------------------------------------- */
+
+  --shadow-glass:
+    0 25px 80px rgba(0, 0, 0, 0.48);
+
+  --shadow-card:
+    0 18px 60px rgba(0, 0, 0, 0.42);
+
+  --shadow-orange:
+    0 0 45px rgba(242, 106, 19, 0.13);
+
+  --shadow-orange-strong:
+    0 0 55px rgba(242, 106, 19, 0.23);
+
+  /* -------------------------------------------------------
+     RADIUS
+     ------------------------------------------------------- */
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --radius-2xl: 30px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 5%,
+      rgba(184, 71, 8, 0.075),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 92% 7%,
+      rgba(242, 106, 19, 0.065),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(84, 33, 8, 0.14),
+      transparent 42%
+    ),
+    #050403;
+
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Inter,
+    Geist,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   BUTTONS / INPUTS
+   ========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(242, 106, 19, 0.30);
+  color: #ffffff;
+}
+
+/* =========================================================
+   ACCESSIBILITY — FOCUS
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--orange-main);
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050403;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(242, 106, 19, 0.45);
+}
+
+/* =========================================================
+   LLD ARENA — TECHNICAL GRID
+   ========================================================= */
+
+.arena-grid {
+  background-image:
+    linear-gradient(
+      rgba(255, 145, 70, 0.022) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 145, 70, 0.022) 1px,
+      transparent 1px
+    );
+
+  background-size: 64px 64px;
+}
+
+/* =========================================================
+   GRID FADE
+   ========================================================= */
+
+.arena-grid-fade {
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black 0%,
+      black 45%,
+      transparent 95%
+    );
+
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      black 0%,
+      black 45%,
+      transparent 95%
+    );
+}
+
+/* =========================================================
+   GLASS
+   ========================================================= */
+
+.glass {
+  background: var(--glass-surface);
+
+  border: 1px solid var(--glass-border);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-light {
+  background: var(--glass-surface-light);
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* =========================================================
+   GLASS HOVER
+   ========================================================= */
+
+.glass-hover {
+  transition:
+    transform 250ms ease,
+    background 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.glass-hover:hover {
+  transform: translateY(-3px);
+
+  background: var(--glass-surface-hover);
+
+  border-color: var(--glass-border-hover);
+
+  box-shadow:
+    var(--shadow-glass),
+    0 0 45px rgba(242, 106, 19, 0.07);
+}
+
+/* =========================================================
+   ORANGE GLOW
+   ========================================================= */
+
+.orange-glow {
+  box-shadow:
+    0 0 0 1px rgba(242, 106, 19, 0.07),
+    0 0 35px rgba(242, 106, 19, 0.12),
+    0 0 80px rgba(242, 106, 19, 0.05);
+}
+
+.orange-glow-strong {
+  box-shadow:
+    0 0 0 1px rgba(255, 132, 48, 0.12),
+    0 0 30px rgba(242, 106, 19, 0.22),
+    0 0 80px rgba(242, 106, 19, 0.10);
+}
+
+/* =========================================================
+   ORANGE TEXT GLOW
+   ========================================================= */
+
+.orange-text-glow {
+  text-shadow:
+    0 0 20px rgba(242, 106, 19, 0.18),
+    0 0 45px rgba(242, 106, 19, 0.08);
+}
+
+/* =========================================================
+   HERO TEXT GRADIENT
+   ========================================================= */
+
+.text-gradient {
+  background:
+    linear-gradient(
+      105deg,
+      #f7f1eb 0%,
+      #f3ded0 34%,
+      #ff9b4a 68%,
+      #f26a13 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+/* =========================================================
+   CINEMATIC LIGHT
+   ========================================================= */
+
+.arena-light {
+  position: absolute;
+
+  border-radius: 9999px;
+
+  background: rgba(242, 106, 19, 0.10);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   ARCHITECTURE NODE
+   ========================================================= */
+
+.architecture-node {
+  border: 1px solid rgba(255, 132, 48, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(45, 20, 8, 0.55),
+      rgba(12, 7, 4, 0.50)
+    );
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.45),
+    0 0 35px rgba(242, 106, 19, 0.05);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* =========================================================
+   ARCHITECTURE CORE
+   ========================================================= */
+
+.architecture-core {
+  position: relative;
+
+  border-radius: 9999px;
+
+  border: 1px solid rgba(255, 132, 48, 0.14);
+
+  box-shadow:
+    inset 0 0 30px rgba(242, 106, 19, 0.04),
+    0 0 50px rgba(242, 106, 19, 0.08);
+}
+
+/* =========================================================
+   ORBIT
+   ========================================================= */
+
+@keyframes arena-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes arena-orbit-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.arena-orbit {
+  animation:
+    arena-orbit 32s linear infinite;
+}
+
+.arena-orbit-reverse {
+  animation:
+    arena-orbit-reverse 26s linear infinite;
+}
+
+/* =========================================================
+   FLOAT
+   ========================================================= */
+
+@keyframes arena-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.arena-float {
+  animation:
+    arena-float 5s ease-in-out infinite;
+}
+
+/* =========================================================
+   PULSE
+   ========================================================= */
+
+@keyframes arena-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08);
+  }
+}
+
+.arena-pulse {
+  animation:
+    arena-pulse 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   GLOW PULSE
+   ========================================================= */
+
+@keyframes arena-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px rgba(242, 106, 19, 0.25);
+  }
+
+  50% {
+    box-shadow:
+      0 0 28px rgba(242, 106, 19, 0.55);
+  }
+}
+
+.arena-glow {
+  animation:
+    arena-glow 3s ease-in-out infinite;
+}
+
+/* =========================================================
+   PARTICLE
+   ========================================================= */
+
+@keyframes arena-particle {
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: scale(0.7);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: scale(1.3);
+  }
+}
+
+.arena-particle {
+  animation:
+    arena-particle 3s ease-in-out infinite;
+}
+
+/* =========================================================
+   PAGE REVEAL
+   ========================================================= */
+
+@keyframes arena-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.arena-reveal {
+  animation:
+    arena-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+/* =========================================================
+   LINE SCAN
+   ========================================================= */
+
+@keyframes arena-scan {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.arena-scan {
+  animation:
+    arena-scan 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   SUBTLE NOISE
+   ========================================================= */
+
+.arena-noise {
+  position: relative;
+}
+
+.arena-noise::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.018;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.4'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.arena-divider {
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(242, 106, 19, 0.22),
+      transparent
+    );
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  body {
+    background:
+      radial-gradient(
+        circle at 50% 10%,
+        rgba(184, 71, 8, 0.075),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 50% 90%,
+        rgba(84, 33, 8, 0.12),
+        transparent 38%
+      ),
+      #050403;
+  }
+
+  .arena-grid {
+    background-size: 48px 48px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
